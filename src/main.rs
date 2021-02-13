@@ -1,11 +1,9 @@
 use std::io;
 
 fn main() {
-  // duplicated pointer address issue (two owner)
   let mut input = String::new();
-  // -> owner of valiable is moved to second pointer
-  let mut s = input;
-  // -> error shows :  value borrowed here after move
+  // when reached some_fn ownership is moved, then input is no longer available
+  some_fn(input);
   io::stdin().read_line(&mut input);
   let mut mars_weight = calculate_weight_on_mars(100.0);
   println!("Weight on Mars: {}kg", mars_weight);
@@ -14,6 +12,8 @@ fn main() {
 fn calculate_weight_on_mars(weight: f32) -> f32 {
   (weight / 9.81) * 3.711
 }
+
+fn some_fn(s: String) {}
 
 // 1. each value in Rust is owner by a variable
 
