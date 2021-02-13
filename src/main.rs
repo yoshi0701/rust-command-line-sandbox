@@ -4,8 +4,8 @@ fn main() {
   let mut input = String::new();
 
   let mut s1 = &mut input;
-  let s2 = &input;
-  // -> muttable borrow and immutable borrow will be confict
+  let mut s2 = &mut input;
+  // second mutable borrow restriction prevent data race
   println!("{} {}", s1, s2);
 
   some_fn(&mut input);
