@@ -3,12 +3,12 @@ use std::io;
 fn main() {
   let mut input = String::new();
 
-  let mut s1 = &mut input;
-  let mut s2 = &mut input;
-  // second mutable borrow restriction prevent data race
-  println!("{} {}", s1, s2);
+  let s1 = &input;
+  let s2 = &input;
 
   some_fn(&mut input);
+  // mutable borrow issue happen due to imput passed to fn
+  println!("{} {}", s1, s2);
   io::stdin().read_line(&mut input);
   let mut mars_weight = calculate_weight_on_mars(100.0);
   println!("Weight on Mars: {}kg", mars_weight);
