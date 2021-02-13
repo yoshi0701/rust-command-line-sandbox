@@ -7,8 +7,10 @@ fn main() {
   // add unwrap if result is error terminate excution
   io::stdin().read_line(&mut input).unwrap();
 
-  // prevent white space
-  let weight = input.trim();
+  // trim: prevent white space,
+  // parse: parse type we want,
+  // unwrap: terminate if parse fail
+  let weight:f32 = input.trim().parse().unwrap();
   dbg!(weight);
 
   println!("input: {}", input);
