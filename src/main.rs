@@ -4,17 +4,10 @@ fn main() {
   println!("Enter your weight (kg): ");
   let mut input = String::new();
 
-  // add unwrap if result is error terminate excution
   io::stdin().read_line(&mut input).unwrap();
 
-  // trim: prevent white space,
-  // parse: parse type we want,
-  // unwrap: terminate if parse fail
   let weight:f32 = input.trim().parse().unwrap();
-  dbg!(weight);
-
-  println!("input: {}", input);
-  let mut mars_weight = calculate_weight_on_mars(100.0);
+  let mut mars_weight = calculate_weight_on_mars(weight);
   println!("Weight on Mars: {}kg", mars_weight);
 }
 
